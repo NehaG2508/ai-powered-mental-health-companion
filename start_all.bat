@@ -7,13 +7,13 @@ echo.
 cd /d "%~dp0"
 
 echo Starting API Server in new window...
-start "Mental Health Companion API" cmd /k "python -m uvicorn src.api.main:app --host 0.0.0.0 --port 8000"
+start "Mental Health Companion API" cmd /k "cd /d %~dp0 && call .\venv\Scripts\activate && python -m uvicorn src.api.main:app --host 0.0.0.0 --port 8000"
 
 echo Waiting for API to start...
 timeout /t 5 /nobreak >nul
 
 echo Starting Frontend in new window...
-start "Mental Health Companion Frontend" cmd /k "streamlit run src/frontend/app.py"
+start "Mental Health Companion Frontend" cmd /k "cd /d %~dp0 && call .\venv\Scripts\activate && streamlit run src/frontend/app.py"
 
 echo.
 echo ========================================
